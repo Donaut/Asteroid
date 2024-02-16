@@ -11,10 +11,10 @@ namespace AsteroidCore
     internal static class VectorExtensions
     {
         /// <summary>
-        /// 
+        /// Creates a vector pointing towards the angle
         /// </summary>
         /// <param name="angle">The angle measured in radians.</param>
-        /// <returns></returns>
+        /// <returns>No</returns>
         public static Vector2 FromAngle(float angle)
         {
             return new Vector2(MathF.Cos(angle), MathF.Sin(angle));

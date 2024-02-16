@@ -7,8 +7,16 @@ using System.Threading.Tasks;
 
 namespace AsteroidCore.Extensions;
 
-internal static class IEntityExtensions
+internal static class EntityExtensions
 {
+
+    public static bool CirclesIntersects<TEntity1, TEntity2>(TEntity1 entity1, TEntity2 entity2)
+        where TEntity1 : IEntity
+        where TEntity2 : IEntity
+    {
+        return MathExtensions.CirclesIntersects(entity1.Position, entity1.CollisionRadius, entity2.Position, entity2.CollisionRadius);
+    }
+
     /// <summary>
     /// Makes the entity appear at the other side if it leaves the map.
     /// </summary>

@@ -18,13 +18,14 @@ public static class MathExtensions
     /// <returns>The degree converted into radian.</returns>
     public static float ToRadian(this float degree) => degree * ((float)Math.PI / 180f);
 
-    public static bool CirclesIntersects<TEntity1, TEntity2>(TEntity1 entity1, TEntity2 entity2)
-        where TEntity1 : IEntity
-        where TEntity2 : IEntity
-    {
-        return CirclesIntersects(entity1.Position, entity1.CollisionRadius, entity2.Position, entity2.CollisionRadius);
-    }
-
+    /// <summary>
+    /// Checks if two circles are intersecting.
+    /// </summary>
+    /// <param name="p1">Position of the first circle</param>
+    /// <param name="r1">Radius of the first circle</param>
+    /// <param name="p2">Position of the second circle</param>
+    /// <param name="r2">Radius of the second circle</param>
+    /// <returns><see langword="true"/> if the two circle intersects otherwise <see langword="false"/></returns>
     public static bool CirclesIntersects(Vector2 p1, float r1, Vector2 p2, float r2)
     {
         var dx = p1.X - p2.X;
@@ -34,20 +35,15 @@ public static class MathExtensions
         return radiusSum * radiusSum >= (dx * dx) + (dy * dy);
     }
 
+    /// <summary>
+    /// Its like generating points inside a circle but the circle center (minRadius) is forbidden.
+    /// </summary>
+    /// <param name="minRadius"></param>
+    /// <param name="maxRadius"></param>
+    /// <returns></returns>
+    [Obsolete("This method uses Random.Shared, which makes this ")]
     public static Vector2 GenerateRandomPointInRing(float minRadius, float maxRadius)
     {
-        return GenerateRandomPointInRing(minRadius, maxRadius, Random.Shared);
+        return RandomExtensions.GenerateRandomPointInRing(minRadius, maxRadius, Random.Shared);
     }
-
-    public static Vector2 GenerateRandomPointInRing(float minRadius, float maxRadius, Random random)
-    {
-        var randomRadius = minRadius + (maxRadius - minRadius) * random.NextSingle();
-        var randomAngle = 2 * MathF.PI * random.NextSingle();
-
-        var x = randomRadius * MathF.Cos(randomAngle);
-        var y = randomRadius * MathF.Sin(randomAngle);
-
-        return new Vector2(x, y);
-    }
-
 }

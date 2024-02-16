@@ -93,7 +93,7 @@ internal class GameCore : IState
         {
             var asteroid = _asteroids[asteroidIndex];
 
-            if (MathExtensions.CirclesIntersects(_player, asteroid))
+            if (EntityExtensions.CirclesIntersects(_player, asteroid))
             {
                 isDead = true;
             }
@@ -108,7 +108,7 @@ internal class GameCore : IState
                     continue;
                 }
 
-                if (MathExtensions.CirclesIntersects(asteroid, bullet))
+                if (EntityExtensions.CirclesIntersects(asteroid, bullet))
                 {
                     if (asteroid.AsteroidSize == AsteroidSize.Medium || asteroid.AsteroidSize == AsteroidSize.Large)
                     {

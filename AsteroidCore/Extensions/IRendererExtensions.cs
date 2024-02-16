@@ -12,7 +12,7 @@ namespace AsteroidCore.Extensions;
 
 public static class IRendererExtensions
 {
-    private static readonly Dictionary<char, Vector2[]> _letters = new Dictionary<char, Vector2[]>();
+    private static readonly Dictionary<char, Vector2[]> _letters = new();
 
     public static void DrawEntity<TRenderer, TEntity>(this TRenderer renderer, TEntity entity)
         where TRenderer : IRenderer

@@ -23,7 +23,11 @@ public partial class MainForm : Form
 
         SizeChanged += MainForm_SizeChanged;
         Application.Idle += GameLoop;
+
+        Disposed += MainForm_Disposed;
     }
+
+    
 
     protected override void OnKeyUp(KeyEventArgs e)
     {
@@ -150,5 +154,10 @@ public partial class MainForm : Form
         newTrasnform *= Matrix3x2.CreateTranslation(vp_x, vp_y);
 
         _transform = newTrasnform;
+    }
+
+    private void MainForm_Disposed(object? sender, EventArgs e)
+    {
+        Application.Idle -= GameLoop;
     }
 }

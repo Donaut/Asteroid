@@ -1,21 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-
-using AsteroidCore.Entities;
 using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
-using System.Reflection;
-using System.Linq;
-using System.Globalization;
-using AsteroidCore.Extensions;
 using AsteroidCore.States;
-using System.Threading.Tasks;
-using System.Threading;
-using System.Collections;
 
 namespace AsteroidCore;
 
